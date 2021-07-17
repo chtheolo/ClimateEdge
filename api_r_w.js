@@ -149,7 +149,6 @@ function writeJSONOutput(writeLogOutput) {
 	write_json_stream.write(util.format('%s\n',line));
 
 	buffer_str = buffer_str.slice(pos+1);			// remove line from buffer
-	let num = 0;
 	while((pos = buffer_str.indexOf('}')) >= 0) {
 		if (buffer_str[pos+1] == ',') {
 			line = buffer_str.slice(0, pos+1);
@@ -158,6 +157,7 @@ function writeJSONOutput(writeLogOutput) {
 		else {
 			line = buffer_str.slice(0, pos+1);
 			write_json_stream.write(util.format('\t%s\n]\n',line));
+			// --> timestamp for Writing time
 			statistics.write_execution_time = process.hrtime(time_reference)[1]/1000000;
 			buffer_obj = []; 						// empty our buffer
 			writeLogOutput(statistics);
@@ -177,6 +177,8 @@ pipeline(
 			buffer_str += chunk.toString();
 			await pump();
 		}
+		
+		// --> timestamp for Reading time
 		statistics.read_execution_time = process.hrtime(time_reference)[1]/1000000;
 
 		statistics.entries_count = buffer_obj.length;
@@ -195,6 +197,7 @@ pipeline(
 						break;
 				}
 				if (statistics.api_count == statistics.entries_count) {
+					// --> timestamp for API calls time
 					statistics.api_execution_time = process.hrtime(time_reference)[1]/1000000;
 					myAPIemitter.emit('event');
 				}
