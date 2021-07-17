@@ -9,7 +9,6 @@ dotenv.config();
 
 /** POOL CONNECTION TO POSTGRESQL **/
 const pool = new Pool({
-//   user: process.env.USER,
   user: process.env.POSTGRES_USER,
   host: 'localhost',
   database: 'interviewdb',
@@ -18,7 +17,7 @@ const pool = new Pool({
 })
 
 pool.on('error', (err, client) => {
-	console.error('Unexpected error on idle client', err) // your callback here
+	console.error('Unexpected error on idle client', err)
 	writeLogOutput(err);
 	process.exit(-1)
 })
@@ -45,6 +44,10 @@ const myAPIemitter = new MyEmitter();
 
 /** USER ARGUMENTS **/
 const filename = process.argv[2];					// Get input file name
+if (filename === undefined) {
+	console.log('Try again by typing a dataset input!\n\nHint Example:\n~$ node api_r_w.js dictionary.json');
+	process.exit(-1);
+}
 
 /** Create WriteStream **/
 const write_json_stream = createWriteStream('output.json');
@@ -64,7 +67,8 @@ const api = (callback) => {
 };
 /* ------------------------------- */
 
-/** A function that converts */
+/** A function that reads chunks and splits them into lines 
+ * 	and saves them in a buffer object. */
 async function pump() {
 	var pos;
 	while ((pos = buffer_str.indexOf('\n')) >= 0) { // for each line
@@ -81,11 +85,15 @@ async function pump() {
 	}
 }
 
+
+/** This function writes our logs into out output log file. */
 function writeLogOutput(logs) {
 	write_log_stream.write(util.format('%s\n',new Date().toUTCString()));
 	write_log_stream.write(util.format('%s\n', logs));
 }
 
+/** This function is responsible to create a thread pool 
+ * 	and save our data to our postgresql DB. */
 function post(statistics) {
 	pool.connect((error, client, release) => {
 		if (error) {
@@ -117,13 +125,11 @@ function post(statistics) {
 					writeLogOutput(error);
 				}
 				else {
-					console.log('Write query complete!');
-					writeLogOutput('Write query complete');
+					writeLogOutput('Insert query sucessfully saved to DB!');
 				}
 			});
 		}
 	});
-
 }
 
 /** A function that writes the output into a json file. */
@@ -153,7 +159,7 @@ function writeJSONOutput(writeLogOutput) {
 	}
 	statistics.Write_execution_time = process.hrtime(time_reference)[1]/1000000;
 	writeLogOutput(statistics);
-	post(statistics);
+	post(statistics);								// Save data to DB
 }
 
 /** Start recording time computation */
