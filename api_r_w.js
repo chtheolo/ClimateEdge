@@ -45,7 +45,11 @@ const myAPIemitter = new MyEmitter();
 /** USER ARGUMENTS **/
 const filename = process.argv[2];					// Get input file name
 if (filename === undefined) {
-	console.log('Try again by typing a dataset input!\n\nHint Example:\n~$ node api_r_w.js dictionary.json');
+	console.log('Try again!\nGive a dataset as input!\n\nHint Example:\n~$ node api_r_w.js dictionary.json');
+	process.exit(-1);
+}
+else if (filename != undefined && filename.length >=0 && filename.endsWith('.json') == false) {
+	console.log('Try again!\nGive a .json dataset as input!\n\nHint Example:\n~$ node api_r_w.js dictionary.json');
 	process.exit(-1);
 }
 
@@ -155,9 +159,9 @@ function writeJSONOutput(writeLogOutput) {
 			line = buffer_str.slice(0, pos+1);
 			write_json_stream.write(util.format('\t%s\n]\n',line));
 			statistics.write_execution_time = process.hrtime(time_reference)[1]/1000000;
-			buffer_obj = []; 				// empty our buffer
+			buffer_obj = []; 						// empty our buffer
 			writeLogOutput(statistics);
-			post(statistics);								// Save data to DB
+			post(statistics);						// Save data to DB
 		}
 		buffer_str = buffer_str.slice(pos+2);		// remove line from buffer
 	}
