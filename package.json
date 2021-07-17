@@ -1,0 +1,23 @@
+{
+  "name": "climateedge",
+  "version": "1.0.0",
+  "description": "A simple script in nodejs that read large JSON data, process them and write outputs.\"",
+  "main": "api_r_w.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chtheolo/ClimateEdge.git"
+  },
+  "author": "Chris Theologou",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chtheolo/ClimateEdge/issues"
+  },
+  "homepage": "https://github.com/chtheolo/ClimateEdge#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "pg": "^8.6.0"
+  }
+}
