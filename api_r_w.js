@@ -33,9 +33,9 @@ var statistics = {
 	true_count: 0,
 	false_count: 0,
 	pipeline_errors_count: 0,
-	Read_execution_time: 0,
-	Write_execution_time: 0,
-	Api_execution_time: 0,
+	read_execution_time: 0,
+	write_execution_time: 0,
+	api_execution_time: 0,
 }
 
 /** Create my own Event Emitter */
@@ -157,7 +157,7 @@ function writeJSONOutput(writeLogOutput) {
 		}
 		buffer_str = buffer_str.slice(pos+2);		// remove line from buffer
 	}
-	statistics.Write_execution_time = process.hrtime(time_reference)[1]/1000000;
+	statistics.write_execution_time = process.hrtime(time_reference)[1]/1000000;
 	writeLogOutput(statistics);
 	post(statistics);								// Save data to DB
 }
@@ -172,7 +172,7 @@ pipeline(
 			buffer_str += chunk.toString();
 			await pump();
 		}
-		statistics.Read_execution_time = process.hrtime(time_reference)[1]/1000000;
+		statistics.read_execution_time = process.hrtime(time_reference)[1]/1000000;
 
 		statistics.entries_count = buffer_obj.length;
 		time_reference = process.hrtime();
@@ -190,7 +190,7 @@ pipeline(
 						break;
 				}
 				if (statistics.api_count == statistics.entries_count) {
-					statistics.Api_execution_time = process.hrtime(time_reference)[1]/1000000;
+					statistics.api_execution_time = process.hrtime(time_reference)[1]/1000000;
 					buffer_obj = []; 				// empty our buffer
 					myAPIemitter.emit('event');
 				}
