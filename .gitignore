@@ -1,0 +1,11 @@
+# modules
+node_modules
+
+# env folder
+.env
+
+# output files .json & .log
+output.*
+
+# input dictionary file .json
+dictionary.json
