@@ -50,23 +50,32 @@ The program needs a json dataset as input. For that reason, you can run the crea
 ]
 ```
 
-So you can run the create_json.js by typing :
+So you can run the create_JSONdataset.js by typing :
 
 ```npm
-node create_json.js
+node create_JSONdataset.js
 ```
 
 The file will generate a *dictionary.json* with a 250K entries. You can generate a *dictionary.json* with the number of entries you wish by just giving an argument number like this:
 
 ```npm
-node create_json.js 100
+node create_JSONdataset.js 100
 ```
 So, now the file will generate a *dictionary.json* with 100 entries.
+Moreover, you have to run the *.sql* file once as it is assumed that the developed API is not responsible for creating database schemas. It is assumed that another API will generate the schemas which may be developed from another group team.
+
+Run the following command:
+
+```npm
+sudo -u postgres psql -f dbhandle.sql
+```
 
 Then you can start the program by typing inside the project's directory:
 
 ```npm
-node api_r_w.js dictionary.json
+node api_JsonDataset.js dictionary.json
+OR
+npm start dictionary.json
 ```
 
 <a name="arch"></a>
