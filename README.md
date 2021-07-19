@@ -7,6 +7,7 @@ Also the program stores the necessary data in postgresql with a pre-designed sch
 * [How to run](#how-to-run)
 * [Architecture](#arch)
 * [Future Work](#future)
+* [Questions](#questions)
 
 <a name="how-to-install"></a>
 ## How to install
@@ -337,3 +338,42 @@ I  the future I would like to handle these errors and make code decisions accord
 
 ### More Unit Testing
 For the given time I wrote some simple unit tests. I would like to write more tests in the future in order to have a better perception of how the code behaves in different states and improve its functionality.
+
+<a name="questions"></a>
+## Questions
+
+* *How would you explain APIs to non-technical stakeholders?*
+
+Firstly, I would try a non-technical approach by giving a real-life example, e.g. when you want to calculate an addition in maths with some given numbers, you 
+have to do the whole addition on your own in order to find the solution.
+So, the API is an automate process, in which you can give a certain inputs, like the numbers of the addition in the above example, calculate and return the result
+to you.
+
+* *How would you review your peers' commits?*
+
+    - I would suggest my peers to do meaningful commits and commit early and often. It's far 
+    to run multiple small reviews than a single huge one.
+    - Encouraging developers to produce well-documented code before review is issued
+    - Committing code to a 'test' or "develop' branch first and pushing it to the main one after it successfully passes the review
+    - Code structure with the company's team structure. (There are tools that also do that in CI/CD)
+
+* *What was the most satisfying challenge you have completed and why?*
+
+One of the most satisfying challenge I have completed was a course in my MSc in which I have developed from the top a Wireless Protocol for wireless sensors in TelosB motes. This was a big challenge for me, as the course was for teams of 2 people but unfortunately the number of students was odd so I took the decision to go alone. 
+We had to implement all the backoff of the network, the routing tables, the buffering, the changing node topology in the network, the packet loss, sending new firmaware to nodes and energy efficiency.
+Finally, after fully focusing, many hours of studying, developing, testing and asking a lot of questions I managed to develop a very good solution that work standalone in TelosB motes.
+
+* *What was the most satisfying challenge you have completed and why?*
+
+Using TDD in your project helps you to write small and simple parts of code, so it is modular, 
+you don't mess with a lot of features but only focusing on one. It is also, easy to maitain as your code 
+is being written in different parts and interfaces. This follows with an easier to refactor. Nevertheless, all these pros that TDD comes to, it comes also with some negative things. Developing with TDD is extra slow process as you have to decide the interfaces, write tests and finally start writing code. Moreover, the engineer must have a great perception of the whole project in order to start contribute to the team. It's difficult because all members of the team have to do it. So, in my opinion TDD is good but a utopian approach and I believe that more unit testing is a better, easier and faster way to develop something.
+
+* *What should be the different columns/steps on a Jira board?*
+
+Ideas | ToDo | onProgress | Testing | Done | Bugs
+
+* *Spaces or Tabs?*
+
+The advantages of tabs over spaces are that individual developers can choose differing indents for their code and they also use less storage space.
+However, tabs have problems too. Tabs interact poorly with the maximum columns width, as a tab could be a different number of columns depending on your environment, but a space is always one column.
