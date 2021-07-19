@@ -33,7 +33,6 @@ exports.writeJSONOutput = async function(buffer_obj) {
 				line = buffer_str.slice(0, pos+1);
 				write_json_stream.write(util.format('\t%s\n]\n',line));
 				// --> timestamp for Writing time
-				// statistics.write_execution_time = process.hrtime(time_reference)[1]/1000000;
 				var write_execution_time = process.hrtime(time_reference)[1]/1000000;
 
 				buffer_str = buffer_str.slice(pos+2);		// remove line from buffer
