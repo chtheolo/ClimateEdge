@@ -8,7 +8,7 @@ const write_json_stream = createWriteStream('output.json');
 /** A function that writes the output into a json file. */
 exports.writeJSONOutput = async function(buffer_obj) {
 	return new Promise((resolve, reject) => {
-		time_reference = process.hrtime();
+		var time_reference = process.hrtime();
 		var buffer_str = '';
 
 		buffer_str = JSON.stringify(buffer_obj);
