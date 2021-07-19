@@ -1,9 +1,12 @@
 var fs = require('fs');
 var util = require('util');
 
-var log_file = fs.createWriteStream('./dictionary.json', {flags: 'a'});
+var log_file = fs.createWriteStream('./dictionary.json');
 
-const entries = 250000;
+var entries = process.argv[2];
+if (entries === undefined) {
+	entries = 250000;
+}
 
 const data = {
   	phone: '123456789',
