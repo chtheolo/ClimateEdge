@@ -4,7 +4,8 @@
   "description": "A simple script in nodejs that read large JSON data, process them and write outputs.\"",
   "main": "api_r_w.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha",
+    "start": "node api_JsonDataset.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,8 @@
   "dependencies": {
     "dotenv": "^10.0.0",
     "pg": "^8.6.0"
+  },
+  "devDependencies": {
+    "mocha": "^9.0.2"
   }
 }
