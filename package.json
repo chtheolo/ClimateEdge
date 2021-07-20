@@ -2,7 +2,7 @@
   "name": "climateedge",
   "version": "1.0.0",
   "description": "A simple script in nodejs that read large JSON data, process them and write outputs.\"",
-  "main": "api_r_w.js",
+  "main": "api_JsonDataset.js",
   "scripts": {
     "test": "mocha",
     "start": "node api_JsonDataset.js"
