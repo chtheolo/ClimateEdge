@@ -1,4 +1,4 @@
-# ClimateEdge
+# StreamJsonFiles
 This project is developed in Nodejs/Javascript for the purpose of the interview. The main functionality is to read large json datasets in an efficient way, manilpulate the data and output a new json dictionary and an output.log that has all the information about the process.
 Also the program stores the necessary data in postgresql with a pre-designed schema and a dbhandle.sql file is located with basic queries.
 
